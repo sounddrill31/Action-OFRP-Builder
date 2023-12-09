@@ -109,6 +109,7 @@ jobs:
       run: |
         cd ${{ steps.pwd.outputs.workspace-folder }}/fox_${{ github.event.inputs.MANIFEST_BRANCH }}
         sed -i '/remove-project name="platform\/external\/gflags"/d' .repo/manifests/remove-minimal.xml
+        git clone https://android.googlesource.com/platform/external/gflags/ external/gflags
         set +e
         source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true

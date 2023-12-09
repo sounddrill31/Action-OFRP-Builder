@@ -69,7 +69,7 @@ jobs:
 
     - name: Prepare the build environment
       run: |
-        sudo apt install git aria2 libgflags-dev -y
+        sudo apt install git aria2 -y
         git clone https://gitlab.com/OrangeFox/misc/scripts
         cd scripts
         sudo bash setup/android_build_env.sh
@@ -109,7 +109,6 @@ jobs:
       run: |
         cd ${{ steps.pwd.outputs.workspace-folder }}/fox_${{ github.event.inputs.MANIFEST_BRANCH }}
         set +e
-        sudo apt-get install libgflags-dev -y
         source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
         set -e

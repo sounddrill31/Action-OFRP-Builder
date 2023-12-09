@@ -10,37 +10,39 @@ on:
       MANIFEST_BRANCH:
         description: 'MANIFEST_BRANCH'
         required: true
-        default: '11.0'
+        default: '12.1'
       DEVICE_TREE_URL:
         description: 'DEVICE_TREE_URL'
         required: true
-        default: 'https://github.com/sounddrill31/android_device_motorola_addison-1'
+        default: 'https://github.com/sounddrill31/twrp-device_tecno_TECNO-LG7n'
       DEVICE_TREE_BRANCH:
         description: 'DEVICE_TREE_BRANCH'
         required: true
-        default: 'fox_11.0_A'
+        default: 'fox_12.1'
       DEVICE_PATH:
         description: 'DEVICE_PATH'
         required: true
-        default: 'device/motorola/addison'
+        default: 'device/tecno/TECNO-LG7n'
       COMMON_TREE_URL:
         description: 'COMMON_TREE_URL (if no common tree, leave blank)'
         required: false
+        default: 'https://github.com/transsion-mt6789/twrp-device_transsion_mt6789-common'
       COMMON_PATH:
         description: 'COMMON_PATH (if no common tree, leave blank)'
         required: false
+        default: 'device/transsion/mt6789-common'
       DEVICE_NAME:
         description: 'DEVICE_NAME'
         required: true
-        default: 'addison'
+        default: 'TECNO-LG7n'
       MAKEFILE_NAME:
         description: 'MAKEFILE_NAME'
         required: true
-        default: 'omni_addison'
+        default: 'twrp_LG7n'
       BUILD_TARGET:
         description: 'BUILD_TARGET'
         required: true
-        default: 'recovery'
+        default: 'vendorboot'
 
 jobs:
   build:
@@ -126,6 +128,7 @@ jobs:
         files: |
           ${{ steps.pwd.outputs.workspace-folder }}/fox_${{ github.event.inputs.MANIFEST_BRANCH }}/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/*.img
           ${{ steps.pwd.outputs.workspace-folder }}/fox_${{ github.event.inputs.MANIFEST_BRANCH }}/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/*.zip
+          ${{ steps.pwd.outputs.workspace-folder }}/fox_${{ github.event.inputs.MANIFEST_BRANCH }}/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/vendor_ramdisk.cpio.lz4
         name: ${{ github.event.inputs.DEVICE_NAME }}-${{ github.run_id }}
         tag_name: ${{ github.run_id }}
         body: |
